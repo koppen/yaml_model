@@ -130,6 +130,13 @@ class YamlModel
     @records ||= load_records
   end
 
+# all -- returns an array of all the records as opposed to the id/record pairs returned by
+# YamlModel#all_records
+  def self.all
+    all_records.collect(&:last)
+  end
+
+
 # load_records -- load all records from file
   def self.load_records
     FileUtils.touch(filename) unless test(?f, filename)

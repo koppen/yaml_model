@@ -151,5 +151,15 @@ class YMTest < Test::Unit::TestCase
       end
     end
   end
+
+  def test_all
+    # Ensure we're starting from a blank slate
+    Person.instance_variable_set('@records', nil)
+    david = Person.create(:name => 'David')
+    jakob = Person.create(:name => 'Jakob')
+    results = Person.all
+    assert_equal david, results.first
+    assert_equal jakob, results.last
+  end
 end
 
