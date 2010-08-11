@@ -92,7 +92,7 @@ class YamlModel
   def self.inherited(c)
     def c.filename
       @filename ||= File.join(
-        RAILS_ROOT, "db", name.underscore.pluralize + ".yml"
+        Rails.root, "db", name.underscore.pluralize + ".yml"
       )
     end
   end
